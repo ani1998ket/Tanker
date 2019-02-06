@@ -1,5 +1,7 @@
 let Game = {
     isRunning : false,
+    screens : [],
+    activeScreen : 0,
 };
 Game.start = () => {
     Game.isRunning = true;
@@ -16,6 +18,6 @@ Game.update = () => {
         window.requestAnimationFrame(Game.update);
     }
 };
-Game.draw = ( canvas ) => {
-
+Game.render = ( ) => {
+    renderScreen(Game.screens(Game.activeScreen));
 };
