@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+        <script src = "ImageLoader.js"></script>
+        <script>
+            let Loader = new ImageLoader();
+            let player = Loader.load("../res/images/tankRed.png");
+            let player2 = Loader.load("../res/images/tankGreen.png");
+            Loader.load("../res/images/barrelBlack.png")
+            Loader.onEachImageLoad = function(){
+                let t = Loader.totalImageCount;
+                let l = Loader.loadedImageCount;
+                console.log("loading :" + l/t * 100 + "%");
+                console.log(Loader.allImages);
+                
+                document.body.appendChild(Loader.allImages[Loader.loadedImageCount-1]);
+            } 
+            Loader.onEveryImageLoaded = function(){
+                document.body.appendChild(player);
+            }
+            
+            var sound = new Audio("../res/sounds/highDown.mp3");
+            sound.onload = function() {
+                alert();
+            };
+        </script>
+</body>
+</html>
